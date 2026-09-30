@@ -1,7 +1,7 @@
 [build]
-  command = "npm run build"
+  command = "rm -rf .netlify/.next/cache/turbopack .next/cache/turbopack && npm run build"
   publish = ".next"
 
 [build.environment]
-  SECRETS_SCAN_OMIT_KEYS = "RAG_MIN_SIMILARITY"
-  SECRETS_SCAN_OMIT_PATHS = "README.md, .env.example, AGENTS.md, CLAUDE.md, .netlify/.next/*, .next/*"
+  SECRETS_SCAN_OMIT_KEYS = "GOOGLE_CLIENT_SECRET,NEXTAUTH_SECRET,RAG_MIN_SIMILARITY,DOCUMENT_ENCRYPTION_KEY"
+  SECRETS_SCAN_OMIT_PATHS = "README.md, .env.example, AGENTS.md, CLAUDE.md, .netlify/.next/*, .next/*, .netlify/.next/cache/*, .netlify/.next/cache/turbopack/*"
