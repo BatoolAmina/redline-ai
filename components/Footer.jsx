@@ -87,7 +87,7 @@ export default function Footer() {
               <div className="flex flex-wrap items-center gap-2 font-mono text-xs text-[#4A342A]/75">
                 <div className="inline-flex items-center gap-1.5 rounded-full border border-[#D7C9B8] bg-[#F5F1EA] px-3 py-1 shadow-2xs">
                   <ShieldCheck className="h-3.5 w-3.5 text-[#7D5A44]" />
-                  <span>Temporary Memory Only</span>
+                  <span>Encrypted Document Storage</span>
                 </div>
                 <div className="inline-flex items-center gap-1.5 rounded-full border border-[#D7C9B8] bg-[#F5F1EA] px-3 py-1 shadow-2xs">
                   <Sparkles className="h-3.5 w-3.5 text-[#B2967D]" />
@@ -151,20 +151,12 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <a href="#privacy" className="group inline-flex items-center gap-1 transition-colors hover:text-[#7D5A44]">
+                  <Link href="/compare" className="group inline-flex items-center gap-1 transition-colors hover:text-[#7D5A44]">
                     <span className="relative">
-                      Document Security
+                      Compare documents
                       <span className="absolute bottom-0 left-0 h-px w-0 bg-[#7D5A44] transition-all duration-300 group-hover:w-full" />
                     </span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#terms" className="group inline-flex items-center gap-1 transition-colors hover:text-[#7D5A44]">
-                    <span className="relative">
-                      Terms of Service
-                      <span className="absolute bottom-0 left-0 h-px w-0 bg-[#7D5A44] transition-all duration-300 group-hover:w-full" />
-                    </span>
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </motion.div>
