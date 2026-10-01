@@ -183,7 +183,7 @@ export default function Hero() {
             <span className="hidden sm:inline text-[#D7C9B8]/40">&bull;</span>
             <span className="flex items-center gap-2">
               <ShieldCheck className="h-3.5 w-3.5 text-[#B2967D] shrink-0" />
-              Temporary in-memory analysis
+              Encrypted document storage
             </span>
           </motion.div>
         </motion.div>
