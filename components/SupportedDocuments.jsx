@@ -173,7 +173,7 @@ export default function SupportedDocuments() {
           className="mx-auto mt-12 flex items-center justify-center gap-2.5 rounded-2xl border border-[#D7C9B8]/70 bg-[#F5F1EA]/80 px-5 py-3.5 font-mono text-xs text-[#4A342A]/75 shadow-xs backdrop-blur-md max-w-xl text-center"
         >
           <AlertCircle className="h-4 w-4 shrink-0 text-[#7D5A44]" />
-          <span>Works best with PDFs containing selectable text. Scanned documents are not supported yet.</span>
+          <span>Selectable-text PDFs work directly. Scanned PDFs require an OCR service configured by the deployment.</span>
         </motion.div>
 
       </div>
