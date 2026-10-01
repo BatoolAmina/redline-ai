@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Sparkles, Menu, X, ArrowUpRight, ShieldAlert, FileText, CheckCircle2 } from "lucide-react";
+import AuthButton from "@/components/AuthButton";
 
 export default function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -105,6 +106,7 @@ export default function Nav() {
               <span>Analyze a document</span>
             </Link>
           </motion.div>
+          <AuthButton compact />
         </nav>
 
         {/* Mobile Hamburger Toggle */}
@@ -112,7 +114,9 @@ export default function Nav() {
           whileTap={reduceMotion ? {} : { scale: 0.9 }}
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           className="relative rounded-xl border border-[#D7C9B8]/60 bg-[#F5F1EA] p-2 text-[#4A342A] shadow-xs transition-colors hover:bg-[#D7C9B8]/30 md:hidden"
-          aria-label="Toggle navigation menu"
+          aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-expanded={mobileMenuOpen}
+          aria-controls="mobile-navigation"
         >
           <AnimatePresence mode="wait">
             {mobileMenuOpen ? (
@@ -148,6 +152,7 @@ export default function Nav() {
             initial="closed"
             animate="open"
             exit="closed"
+            id="mobile-navigation"
             className="overflow-hidden border-b border-[#D7C9B8] bg-[#F5F1EA]/95 backdrop-blur-xl px-6 pb-6 pt-3 md:hidden"
           >
             <div className="flex flex-col gap-4 font-sans text-sm text-[#4A342A]">
@@ -174,6 +179,9 @@ export default function Nav() {
                   <span>Analyze a document</span>
                   <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </Link>
+              </motion.div>
+              <motion.div variants={itemVariants} className="pt-1">
+                <AuthButton />
               </motion.div>
             </div>
           </motion.div>
