@@ -15,11 +15,36 @@ lawyer, doctor, insurer, or financial adviser.
 - Compares two PDF versions and describes the practical effect of changes.
 - Shows the original PDF alongside the analysis so the source remains easy to inspect.
 - Keeps documents inside authenticated workspaces and encrypts stored document data.
+# Redline AI
+
+Redline helps people make sense of dense documents. Upload a contract, insurance
+policy, consent form, or other PDF to get a plain-language summary, important
+clauses, and answers grounded in the document itself.
+
+It is designed to help someone read a document more carefully, not to replace a
+lawyer, doctor, insurer, or financial adviser.
+
+## What it does
+
+- Summarizes the parts of a document that affect money, rights, obligations, or risk.
+- Keeps each explanation tied to a quoted passage, page, and section when available.
+- Lets you ask questions about the uploaded document and refuses questions it cannot ground in the text.
+- Compares two PDF versions and describes the practical effect of changes.
+- Shows the original PDF alongside the analysis so the source remains easy to inspect.
+- Keeps documents inside authenticated workspaces and encrypts stored document data.
 
 ---
 
 ## Built with
+## Built with
 
+- **App:** Next.js App Router, React, and plain JavaScript
+- **Interface:** Tailwind CSS, Framer Motion, and Lucide icons
+- **Models:** Gemini embeddings and Gemini chat through the OpenAI-compatible API
+- **Documents:** `pdf-parse`, optional configured OCR, and page-level text positions
+- **Storage:** Neon/Postgres for workspace records and encrypted document payloads
+- **Auth and limits:** NextAuth with Google OAuth and Upstash Redis rate limiting
+- **Tests:** Vitest
 - **App:** Next.js App Router, React, and plain JavaScript
 - **Interface:** Tailwind CSS, Framer Motion, and Lucide icons
 - **Models:** Gemini embeddings and Gemini chat through the OpenAI-compatible API
@@ -31,10 +56,12 @@ lawyer, doctor, insurer, or financial adviser.
 ---
 
 ## Run it locally
+## Run it locally
 
 ```bash
 npm install
 Copy-Item .env.example .env.local
+# Fill in the values in .env.local; see "Required services" below.
 # Fill in the values in .env.local; see "Required services" below.
 npm run dev
 ```
@@ -96,6 +123,7 @@ The service should accept a PDF and return the page format described in
 - Secrets stay on the server and are never returned to the browser.
 - Read [`docs/THREAT_MODEL.md`](docs/THREAT_MODEL.md), [`docs/PRIVACY_REVIEW.md`](docs/PRIVACY_REVIEW.md), and [`docs/DEPLOYMENT_CONTROLS.md`](docs/DEPLOYMENT_CONTROLS.md) before handling sensitive documents.
 
+## Check your changes
 ## Check your changes
 
 ```bash
