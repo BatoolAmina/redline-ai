@@ -7,7 +7,7 @@ import { Plus, Minus, HelpCircle, Sparkles } from "lucide-react";
 const faqs = [
   {
     question: "Is my document stored on your servers?",
-    answer: "The PDF text and embeddings are held temporarily in server memory so you can ask questions. They are not saved to disk or an account, and the in-memory session expires within two hours. A server restart clears active sessions."
+    answer: "Extracted text and embeddings are encrypted and stored in Postgres so you can ask questions. Document access expires after two hours. Deployments must run the scheduled cleanup to remove expired encrypted data; you can delete a session sooner."
   },
   {
     question: "How does Redline analyze legal terminology accurately?",
@@ -15,7 +15,7 @@ const faqs = [
   },
   {
     question: "Can I upload scanned PDFs or image-based contracts?",
-    answer: "Redline can analyze PDFs with selectable text. Scanned or image-only documents are not supported yet because OCR is not currently built in."
+    answer: "Selectable-text PDFs work directly. Scanned or image-only PDFs require an OCR service configured by the deployment."
   },
   {
     question: "Does Redline offer legal advice?",
