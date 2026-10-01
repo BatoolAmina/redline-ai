@@ -138,7 +138,7 @@ export default function CallToAction() {
             <span className="hidden sm:inline text-[#D7C9B8]/30">&bull;</span>
             <span className="flex items-center gap-2">
               <ShieldCheck className="h-3.5 w-3.5 text-[#B2967D]" />
-              Temporary memory session
+              Encrypted document storage
             </span>
             <span className="hidden sm:inline text-[#D7C9B8]/30">&bull;</span>
             <span className="flex items-center gap-2">
