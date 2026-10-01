@@ -1,0 +1,34 @@
+{
+  "name": "redline-retrieval-refusal-v1",
+  "reviewStatus": "needs-human-review",
+  "reviewInstructions": "Have two independent reviewers label answerable and relevantChunkIds from the source document. Resolve disagreements before calibration.",
+  "cases": [
+    {
+      "id": "lease-001",
+      "domain": "rental",
+      "document": "fixtures/lease-sample.pdf",
+      "question": "When can the landlord deduct money from the deposit?",
+      "answerable": null,
+      "relevantChunkIds": [],
+      "notes": "Replace with a de-identified source and reviewer labels."
+    },
+    {
+      "id": "insurance-001",
+      "domain": "insurance",
+      "document": "fixtures/insurance-sample.pdf",
+      "question": "What events are excluded from coverage?",
+      "answerable": null,
+      "relevantChunkIds": [],
+      "notes": "Replace with a de-identified source and reviewer labels."
+    },
+    {
+      "id": "negative-001",
+      "domain": "medical",
+      "document": "fixtures/consent-sample.pdf",
+      "question": "What is the weather forecast next week?",
+      "answerable": false,
+      "relevantChunkIds": [],
+      "notes": "Expected refusal because the question is outside the document."
+    }
+  ]
+}
