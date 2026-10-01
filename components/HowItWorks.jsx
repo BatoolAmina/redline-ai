@@ -4,7 +4,7 @@ const steps = [
   {
     n: "01",
     title: "Upload the document",
-    body: "Drop in a PDF — a lease, a policy, a consent form. Your analysis stays in temporary server memory.",
+    body: "Drop in a PDF — a lease, a policy, a consent form. Extracted document data is encrypted in storage and access expires after two hours.",
   },
   {
     n: "02",
