@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { 
@@ -17,6 +18,7 @@ import {
   AlertCircle,
   HelpCircle
 } from "lucide-react";
+import PdfViewer from "@/components/PdfViewer";
 
 const processingStages = [
   "Reading PDF pages",
@@ -33,10 +35,12 @@ const importanceStyle = {
 
 export default function LiveDemo() {
   const reduceMotion = useReducedMotion();
+  const { data: session } = useSession();
   const [result, setResult] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [fileName, setFileName] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
 
   const [messages, setMessages] = useState([]);
   const [question, setQuestion] = useState("");
@@ -72,6 +76,8 @@ export default function LiveDemo() {
     if (result?.docId) {
       fetch(`/api/documents/${result.docId}`, { method: "DELETE" }).catch(() => {});
     }
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
+    setPreviewUrl(URL.createObjectURL(file));
     setFileName(file.name);
     setProcessingStage(0);
     setError(null);
@@ -100,6 +106,8 @@ export default function LiveDemo() {
       await fetch(`/api/documents/${result.docId}`, { method: "DELETE" }).catch(() => {});
     }
     setResult(null);
+    if (previewUrl) URL.revokeObjectURL(previewUrl);
+    setPreviewUrl(null);
     setMessages([]);
     setError(null);
   }
@@ -209,7 +217,7 @@ export default function LiveDemo() {
           Try it on your own document
         </h2>
         <p className="font-sans text-sm sm:text-base leading-relaxed text-[#4A342A]/75">
-          Upload a PDF for temporary in-memory analysis. Documents are not saved to disk or an account and expire within two hours.
+          Upload a PDF and ask up to four questions without an account. Sign in when you want a persistent workspace.
         </p>
       </motion.div>
 
@@ -352,6 +360,9 @@ export default function LiveDemo() {
               animate="visible"
               className="space-y-5 sm:space-y-6"
             >
+              <motion.div variants={itemVariants}>
+                <PdfViewer url={previewUrl} pages={result.sourcePages || []} />
+              </motion.div>
               {/* Card 1: Document Metadata & Summary */}
               <motion.div variants={itemVariants} className="rounded-2xl sm:rounded-3xl border border-[#D7C9B8] bg-[#F5F1EA]/90 p-4 sm:p-6 lg:p-8 shadow-md backdrop-blur-md">
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-b border-[#D7C9B8]/70 pb-3 sm:pb-4">
@@ -533,14 +544,14 @@ export default function LiveDemo() {
                   <span>Compare versions</span>
                 </Link>
 
-                <button 
+                {session?.user?.role !== "viewer" && <button 
                   type="button" 
                   onClick={releaseDocument} 
                   className="inline-flex min-h-10 sm:min-h-11 items-center justify-center gap-1.5 font-sans text-xs text-[#4A342A]/70 transition-colors hover:text-[#C1442E] px-3"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
                   <span>Delete session</span>
-                </button>
+                </button>}
               </motion.div>
             </motion.div>
           )}
