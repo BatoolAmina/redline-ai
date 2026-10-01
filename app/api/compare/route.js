@@ -45,6 +45,10 @@ export async function POST(req) {
         { status: rate.unavailable ? 503 : 429, headers: rate.retryAfter ? { "Retry-After": String(rate.retryAfter) } : {} }
       );
     }
+    const contentLength = Number(req.headers.get("content-length") || 0);
+    if (contentLength > 2 * MAX_FILE_SIZE + 1024 * 1024) {
+      return NextResponse.json({ error: "The comparison request is too large." }, { status: 413 });
+    }
 
     const formData = await req.formData();
     const [before, after] = await Promise.all([
