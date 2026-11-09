@@ -160,26 +160,6 @@ export default function Footer() {
                 </li>
               </ul>
             </motion.div>
-
-            <motion.div variants={itemVariants} className="col-span-2 sm:col-span-1">
-              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-[#7D5A44]">
-                Event
-              </p>
-              <motion.div
-                whileHover={reduceMotion ? {} : { y: -2 }}
-                className="group relative mt-4 overflow-hidden rounded-2xl border border-[#D7C9B8] bg-[#F5F1EA] p-4 shadow-2xs transition-all hover:border-[#7D5A44]"
-              >
-                <div className="flex items-center justify-between mb-1">
-                  <p className="font-mono text-xs font-bold text-[#4A342A] group-hover:text-[#7D5A44] transition-colors">
-                    Hack-A-Throne 2026
-                  </p>
-                  <span className="h-2 w-2 rounded-full bg-[#B2967D]" />
-                </div>
-                <p className="font-sans text-xs text-[#4A342A]/70 leading-relaxed">
-                  AI &amp; Intelligent Systems Track
-                </p>
-              </motion.div>
-            </motion.div>
           </div>
         </motion.div>
 
@@ -194,13 +174,6 @@ export default function Footer() {
           <p>&copy; {new Date().getFullYear()} Redline AI Document Intelligence. All rights reserved.</p>
 
           <div className="flex items-center gap-5">
-            <span className="inline-flex items-center gap-1 text-[#4A342A]/70">
-              Made with <Heart className="h-3 w-3 fill-[#7D5A44] text-[#7D5A44]" /> for clear fine print
-            </span>
-            <a
-              href="#top"
-              className="group inline-flex items-center gap-1 uppercase tracking-wider text-[#7D5A44] hover:text-[#4A342A] transition-colors"
-            >
               <span>Back to top</span>
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
